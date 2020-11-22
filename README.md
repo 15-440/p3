@@ -95,7 +95,7 @@ Each program is discussed individually below:
 ##### The `srunner` program
 
 The `srunner` (`StorageServer`-runner) program creates and runs an instance of your
-`StorageServer` implementation. Some example usage is provided below (this assumes you are in the `$GOPATH/bin` directory):
+`StorageServer` implementation. Some example usage is provided below (this assumes you are in the `$GOPATH/bin` directory; note you will have to run the commands in separate terminals or in the background with &):
 
 ```bash
 # Start a single master storage server on port 9009.
@@ -103,11 +103,10 @@ The `srunner` (`StorageServer`-runner) program creates and runs an instance of y
 
 # Start the master on port 9009 and run two additional slaves.
 ./srunner -port=9009 -N=3
-./srunner -master="localhost:9009"
-./srunner -master="localhost:9009"
+./srunner -port=9008 -master="localhost:9009"
+./srunner -port=9007 -master="localhost:9009"
 ```
 
-Note that in the above example you do not need to specify a port for your slave storage servers.
 For additional usage instructions, please execute `./srunner -help` or consult the `srunner.go` source code.
 
 ##### The `lrunner` program
